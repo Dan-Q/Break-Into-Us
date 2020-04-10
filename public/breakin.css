@@ -1,0 +1,97 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background: #fff;
+  color: #333;
+}
+
+template {
+  display: none;
+}
+
+.digit-value {
+  display: none;
+}
+
+.padlock {
+  display: flex;
+  flex-direction: column;
+  width: 320px;
+}
+
+.padlock-shackle {
+  border-width: 48px 48px 0;
+  border-style: solid;
+  border-color: #ccc;
+  height: 180px;
+  border-radius: 100px 100px 0 0;
+  margin: 0 64px;
+}
+
+.padlock-body {
+  border: 6px solid #ddd;
+  border-radius: 25px;
+  padding: 15px 8px;
+  background: #ddd;
+}
+
+.spinner-digits {
+  display: flex;
+  justify-content: center;
+}
+
+.spinner-digits .digit-wrapper {
+  display: flex;
+  flex-direction: column;
+  font-family: monospace;
+  margin: 0 4px;
+}
+
+.spinner-digits button {
+  height: 32px;
+  width: 32px;
+  background: transparent;
+  border: 0;
+  padding: 0;
+  margin: 4px 0;
+  cursor: pointer;
+  opacity: 0.4;
+  transition: opacity 300ms;
+}
+
+.spinner-digits button:hover, .spinner-digits button:focus, .spinner-digits button:active {
+  opacity: 1;
+}
+
+.spinner-digits .digit {
+  padding: 0;
+  list-style: none;
+  border: 2px solid black;
+  border-radius: 6px;
+  line-height: 100%;
+  font-size: 32px;
+  height: 50px;
+  width: 32px;
+  overflow: scroll;
+  scroll-snap-type: x mandatory;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  text-align: center;
+  background: #fff;
+}
+
+.spinner-digits .digit::-webkit-scrollbar {
+  display: none;
+}
+
+.spinner-digits .digit li {
+  display: block;
+  scroll-snap-align: center;
+}
+
+.lock-controls {
+  display: flex;
+  justify-content: center;
+}
