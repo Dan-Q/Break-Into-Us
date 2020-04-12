@@ -1,5 +1,6 @@
 const lock = document.querySelector('#lock');
 const spinnerDigitWrapperTemplate = document.querySelector('#spinner-digit-wrapper').innerHTML;
+const spinnerDigitHeight = 32; // px
 
 function siblingsBeforeAndAfter(el){
   let before = [], after = [];
@@ -71,16 +72,22 @@ function setUpDigitScrollButtons(){
     e.preventDefault();
     if(button.classList.contains('digit-up')){
       const digit = button.closest('.digit-wrapper').querySelector('.digit');
-      digit.scrollBy(0, -32);
+      digit.scrollBy(0, 1 - spinnerDigitHeight);
       return;
     }
     if(button.classList.contains('digit-down')){
       const digit = button.closest('.digit-wrapper').querySelector('.digit');
-      digit.scrollBy(0, 32);
+      digit.scrollBy(0, spinnerDigitHeight);
       return;
     }
     if(button.classList.contains('unlock')){
-      const combo = [...lock.querySelectorAll('input')].map(input=>input.value).join('');
+      let combo = [...lock.querySelectorAll('input')].map(input=>input.value).join('');
+      if(combo == ''){
+        // if the IntersectionObserver fails, e.g. on Chrome for Android, we might not have a value: get one the hard way
+        [...lock.querySelectorAll('.digit')].forEach(digit=>{
+          combo += digit.querySelectorAll('li')[Math.round(digit.scrollTop / spinnerDigitHeight)].dataset.value;
+        });
+      }
       alert(combo);
       return;
     }
