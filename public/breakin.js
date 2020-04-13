@@ -1,6 +1,15 @@
-const lock = document.querySelector('#lock');
-const spinnerDigitWrapperTemplate = document.querySelector('#spinner-digit-wrapper').innerHTML;
+const lock = document.getElementById('lock');
+const dialog = document.querySelector('dialog');
+const spinnerDigitWrapperTemplate = document.getElementById('spinner-digit-wrapper').innerHTML;
 const spinnerDigitHeight = 32; // px
+let state;
+let currentPuzzleNum;
+let puzzles;
+
+function playSound(sound){
+  const audio = new Audio(`audio/${sound}.mp3`);
+  audio.play();
+}
 
 function siblingsBeforeAndAfter(el){
   let before = [], after = [];
@@ -100,6 +109,18 @@ function loadLockTemplate(lockName){
   lock.innerHTML = lockTemplate.innerHTML;
 }
 
+function setUpDialogInteractions(){
+  dialog.addEventListener('click', e=>{
+    const button = e.target.closest('button');
+    if(!button) return;
+    e.preventDefault();
+    const action = button.dataset.action;
+    if(action == 'start'){
+      startGame();
+    }
+  }, { capture: true });
+}
+
 function generatePadlock(digits = 3){
   loadLockTemplate('padlock');
   let digitsHTML = '';
@@ -110,6 +131,58 @@ function generatePadlock(digits = 3){
   setUpDigitIntersectionObservers();
 }
 
-setUpDigitScrollButtons();
+function renderState(){
+  if(state == 'play'){
+    if (typeof dialog.close === "function") {
+      dialog.close();
+    } else {
+      dialog.removeAttribute('open');
+    }
+  } else {
+    dialog.innerHTML = document.getElementById(state).innerHTML;
+    if (typeof dialog.showModal === "function") {
+      dialog.showModal();
+    } else {
+      dialog.setAttribute('open', true);
+    }
+  }
+}
 
-setTimeout(generatePadlock, 250);
+function setState(newState){
+  state = newState;
+  renderState();
+}
+
+function currentPuzzle(){
+  return puzzles[currentPuzzleNum];
+}
+
+function renderClues(){
+  const clues = document.getElementById('clues');
+  let cluesHTML = ''
+  currentPuzzle().rules.forEach(clue=>{
+    cluesHTML += `<li><span class="clue-pattern clue-${clue.class}">${clue.pattern}</span><span class="clue-description">${clue.description}</span></li>`;
+  });
+  clues.innerHTML = cluesHTML;
+}
+
+function startPuzzle(puzzleNum){
+  currentPuzzleNum = puzzleNum;
+  renderClues();
+  generatePadlock(currentPuzzle().length);
+  setState('play');
+}
+
+function startGame(){
+  startPuzzle(0);
+}
+
+setUpDialogInteractions();
+setUpDigitScrollButtons();
+setState('loading');
+
+fetch('puzzles.json').then(r=>r.json()).then(json=>{
+  puzzles = json;
+  setState('intro');
+});
+

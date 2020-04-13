@@ -1,3 +1,8 @@
+require 'json'
+
+PUZZLES_FILE = 'public/puzzles.json'
+JSON_PRETTY_PRINT = true
+
 class Alphabet
   def initialize(characters)
     @characters = characters.to_a
@@ -82,8 +87,6 @@ end
 
 class Rule
   NUMBERS = %w{no one two three four five six seven eight nine ten eleven twelve thirteen fourteen fifteen sixteen seventeen eighteen nineteen twenty}
-  BASE_DIFFICULTY = 1.0 # override this in subclasses
-  SHOW_PATTERN_IN_TO_S = true
 
   attr_accessor :pattern
 
@@ -92,7 +95,11 @@ class Rule
   end
 
   def difficulty
-    BASE_DIFFICULTY
+    1.0
+  end
+
+  def show_pattern
+    true
   end
 
   def number(num)
@@ -113,7 +120,16 @@ class Rule
   end
 
   def to_s
-    sprintf(' "%s" %-30s %s', (SHOW_PATTERN_IN_TO_S ? @pattern : ''), self.class.name, description)
+    sprintf(' "%s" %-30s %s', (show_pattern ? @pattern : ''), self.class.name, description)
+  end
+
+  def data
+    hash = {
+      description: description,
+      class: self.class.name,
+    }
+    hash[:pattern] = pattern if show_pattern
+    hash
   end
 
   def valid?
@@ -187,11 +203,12 @@ class NoBullsCowsRule < BullsCowsRule
 end
 
 class SumOfDigitsRule < Rule
-  BASE_DIFFICULTY = 1.0
-  SHOW_PATTERN_IN_TO_S = false
-
   def difficulty
-    BASE_DIFFICULTY * (sum_of_digits / 2)
+    1.0 * (sum_of_digits / 2)
+  end
+
+  def show_pattern
+    false
   end
 
   def sum_of_digits
@@ -212,8 +229,13 @@ class SumOfDigitsRule < Rule
 end
 
 class ParityCountComparisonRule < Rule
-  BASE_DIFFICULTY = 10.0
-  SHOW_PATTERN_IN_TO_S = false
+  def difficulty
+    10.0
+  end
+
+  def show_pattern
+    false
+  end
 
   def parity(combo = nil)
     combo ||= @pattern
@@ -325,6 +347,15 @@ class Puzzle
     @answer = @combos.filter_by(@rules)
     puts "Answer: #{@answer} | Difficulty: #{difficulty}"
   end
+
+  def data
+    {
+      answer: @answer,
+      alphabet: @alphabet.to_a,
+      length: @length,
+      rules: @rules.map(&:data)
+    }
+  end
 end
 
 ###############################################################################
@@ -335,6 +366,11 @@ puzzle = Puzzle.new(
   length: 3,
   # options: { target_reduction_threshold: 0.7 },
 )
+print 'Keep? (^C = no, enter = yes)'
+gets
+puzzles = File.exists?(PUZZLES_FILE) ? JSON.parse(File.read(PUZZLES_FILE)) : []
+puzzles << puzzle.data
+File.open(PUZZLES_FILE, 'w'){|f| f.puts (JSON_PRETTY_PRINT ? JSON.pretty_generate(puzzles) : puzzles.to_json)}
 
 ###############################################################################
 
