@@ -161,7 +161,8 @@ function renderClues(){
   const clues = document.getElementById('clues');
   let cluesHTML = ''
   currentPuzzle().rules.forEach(clue=>{
-    cluesHTML += `<li><span class="clue-pattern clue-${clue.class}">${clue.pattern}</span><span class="clue-description">${clue.description}</span></li>`;
+    const digitsHTML = clue.pattern.split('').map(d=>`<span class="clue-digit">${d}</span>`).join('');
+    cluesHTML += `<li class="clue"><span class="clue-pattern clue-${clue.class}">${digitsHTML}</span><span class="clue-description">${clue.description}</span></li>`;
   });
   clues.innerHTML = cluesHTML;
 }

@@ -42,9 +42,69 @@ body {
   background: #fff;
   color: #333;
   font-size: 16px;
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+}
+
+header, #instruction, #clues, #lock, #score, footer {
+  padding: 0.5rem 1rem;
+}
+
+header {
+  font-size: 2rem;
+  font-weight: bold;
+  text-align: center;
+}
+
+main {
+  display: grid;
+  grid-template: "🎩 🎩" auto "◀ ▶" auto / 50% 50%;
+  align-items: center;
+}
+
+#instruction {
+  grid-area: 🎩;
+}
+
+#clues {
+  grid-area: ◀;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+}
+
+.clue {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin: 0.25rem 0;
+}
+
+.clue-pattern {
+  display: flex;
+  font-family: monospace;
+  line-height: 50px;
+  font-size: 32px;
+}
+
+.clue-digit {
+  padding: 0;
+  border: 2px solid black;
+  border-radius: 6px;
+  height: 50px;
+  width: 32px;
+  text-align: center;
+  background: #fff;
+  margin: 0 4px;
+}
+
+#lock {
+  grid-area: ▶;
 }
 
 dialog {
+  background: #eee;
   display: none;
   border: 0;
   padding: 0;
@@ -165,4 +225,10 @@ template {
 .lock-controls {
   display: flex;
   justify-content: center;
+}
+
+@media (max-width: 720px) {
+  main {
+    grid-template: "🎩" auto "◀" auto "▶" auto / 100%;
+  }
 }
