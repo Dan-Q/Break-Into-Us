@@ -38,6 +38,11 @@ body, button {
   box-sizing: border-box;
 }
 
+h1 {
+  font-size: 1.5rem;
+  margin: 0.5rem 0 0;
+}
+
 a {
   color: #ff12cf;
   text-decoration: underline solid;
@@ -96,11 +101,21 @@ main {
   margin: 0.25rem 0;
 }
 
+.clue + .clue {
+  border-top: 1px solid #ccc;
+  padding-top: 0.5rem;
+}
+
 .clue-pattern {
   display: flex;
   font-family: monospace;
   line-height: 50px;
   font-size: 32px;
+  min-width: 12rem;
+}
+
+.clue-InstructionRule .clue-pattern {
+  display: none;
 }
 
 .clue-digit {
@@ -117,6 +132,10 @@ main {
 .clue-description {
   font-size: 1.2rem;
   margin-left: 1rem;
+}
+
+.clue-InstructionRule .clue-description {
+  font-weight: bold;
 }
 
 #lock {
@@ -147,7 +166,7 @@ dialog[open] {
   padding: 1rem 0.5rem;
 }
 
-dialog button, .lock-controls button {
+dialog button, .lock-controls button, .score-buttons button {
   border: 1px solid #00862e;
   border-radius: 1rem;
   background: linear-gradient(#fff, #ecffb8) #ecffb8;
@@ -258,7 +277,7 @@ template, .digit-value {
   justify-content: center;
 }
 
-.lock-controls button {
+.lock-controls button, .score-buttons button {
   margin: 0.5rem 1rem 0;
   padding: 0.5rem 1.5rem;
   font-size: 1.25rem;
@@ -290,13 +309,26 @@ footer {
   font-size: 0.8rem;
 }
 
+footer ul {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin: 0;
+  padding: 0;
+}
+footer li + li {
+  border-left: 1px solid #ccc;
+}
+footer li {
+  padding: 0.25rem 1rem;
+}
 
 @media (max-width: 720px) {
   main {
     grid-template: "🎩" auto "◀" auto "▶" auto / 100%;
   }
 }
-
 
 @keyframes shake {
   10%, 90% {

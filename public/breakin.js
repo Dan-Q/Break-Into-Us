@@ -1,12 +1,15 @@
 const lock = document.getElementById('lock');
 const dialog = document.querySelector('dialog');
+const score = document.getElementById('score');
 const spinnerDigitWrapperTemplate = document.getElementById('spinner-digit-wrapper').innerHTML;
 const spinnerDigitHeight = 32; // px
 let state;
 let currentPuzzleNum;
 let puzzles;
+let triedPuzzles = [];
 let solvedPuzzles = [];
 let sounds = { fail: null, unlock: null }
+let lastKeyboardDigit = 0;
 
 function loadSounds(){
   Object.keys(sounds).forEach(s=>sounds[s] = new Audio(`audio/${s}.mp3`))
@@ -127,6 +130,38 @@ function setUpDialogInteractions(){
   }, { capture: true });
 }
 
+function anotherPuzzle(){
+  if(triedPuzzles.length == 1){
+    startPuzzle(1); // move on to the next one
+  } else {
+    const untriedPuzzles = [...Array(puzzles.length).keys()].filter(pid=>!triedPuzzles.includes(pid));
+    const unsolvedPuzzles = [...Array(puzzles.length).keys()].filter(pid=>!solvedPuzzles.includes(pid));
+    let targetPuzzle;
+    if(untriedPuzzles.length > 0){
+      targetPuzzle = untriedPuzzles[Math.floor(Math.random()*untriedPuzzles.length)];
+    } else {
+      targetPuzzle = unsolvedPuzzles[Math.floor(Math.random()*unsolvedPuzzles.length)];
+    }
+    if(targetPuzzle){
+      startPuzzle(targetPuzzle);
+    } else {
+      alert("You've solved every puzzle! There aren't any more for you to do (for now).")
+    }
+  }
+}
+
+function setUpScoreInteractions(){
+  score.addEventListener('click', e=>{
+    const button = e.target.closest('button');
+    if(!button) return;
+    e.preventDefault();
+    const action = button.dataset.action;
+    if(action == 'another-puzzle'){
+      anotherPuzzle();
+    }
+  }, { capture: true });
+}
+
 function generatePadlock(){
   loadLockTemplate('padlock');
   let digitsHTML = '';
@@ -166,10 +201,13 @@ function currentPuzzle(){
 }
 
 function updateScore(){
-  const score = document.getElementById('score');
   let totalScore = 0;
   solvedPuzzles.forEach(pid=>totalScore+=puzzles[pid].difficulty);
-  score.innerHTML = `<p><strong>Score: ${totalScore}</strong> (${solvedPuzzles.length} of ${puzzles.length} locks opened).</p>`;
+  let scoreHTML = `<p><strong>Score: ${totalScore}</strong> (${solvedPuzzles.length} of ${puzzles.length} locks opened).</p>`;
+  if(solvedPuzzles.length > 0){
+    scoreHTML += `<p class="score-buttons">Get: <button data-action="another-puzzle">Another lock</button> <button data-action="specific-puzzle">A specific lock</button></p>`;
+  }
+  score.innerHTML = scoreHTML;
 }
 
 function renderInstructions(){
@@ -181,7 +219,7 @@ function renderInstructions(){
   let instructionsHTML = [];
   if(currentPuzzle().instruction) instructionsHTML.push(currentPuzzle().instruction);
   instructionsHTML.push(`The combination consists of ${currentPuzzle().length} values ${describeAlphabet}. Difficulty rating: ${currentPuzzle().difficulty}.`);
-  instruction.innerHTML = `<p>${instructionsHTML.join('<br>')}</p>`;
+  instruction.innerHTML = `<h1>Lock ${(currentPuzzleNum + 1).toString().padStart(4, '0')}</h1><p>${instructionsHTML.join('<br>')}</p>`;
 }
 
 function renderClues(){
@@ -189,7 +227,7 @@ function renderClues(){
   let cluesHTML = ''
   currentPuzzle().rules.forEach(clue=>{
     const digitsHTML = clue.pattern ? clue.pattern.split('').map(d=>`<span class="clue-digit">${d}</span>`).join('') : '';
-    cluesHTML += `<li class="clue"><span class="clue-pattern clue-${clue.class}">${digitsHTML}</span><span class="clue-description">${clue.description}</span></li>`;
+    cluesHTML += `<li class="clue clue-${clue.class}"><span class="clue-pattern">${digitsHTML}</span><span class="clue-description">${clue.description}</span></li>`;
   });
   clues.innerHTML = cluesHTML;
 }
@@ -212,6 +250,8 @@ function attemptSolution(combo){
 
 function startPuzzle(puzzleNum){
   currentPuzzleNum = puzzleNum;
+  triedPuzzles.push(puzzleNum);
+  triedPuzzles = Array.from(new Set(triedPuzzles)); // remove duplicates
   renderInstructions();
   renderClues();
   lock.classList.remove('open');
@@ -226,6 +266,7 @@ function startGame(){
 
 loadSounds();
 setUpDialogInteractions();
+setUpScoreInteractions();
 setUpDigitScrollButtons();
 setState('loading');
 

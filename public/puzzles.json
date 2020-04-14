@@ -14,6 +14,10 @@
     "length": 3,
     "rules": [
       {
+        "description": "These are your clues - use them to crack the lock:",
+        "class": "InstructionRule"
+      },
+      {
         "description": "there is no 3 or 4 in the combination",
         "class": "CustomRule"
       },
@@ -23,6 +27,46 @@
       }
     ],
     "difficulty": 3.5
+  },
+  {
+    "answer": [
+      "224"
+    ],
+    "alphabet": [
+      "1",
+      "2",
+      "3",
+      "4",
+      "5"
+    ],
+    "length": 3,
+    "rules": [
+      {
+        "description": "all digits are wrong (none of these digits are in the combination)",
+        "class": "NoBullsCowsRule",
+        "pattern": "113"
+      },
+      {
+        "description": "two digits are right but in the wrong place",
+        "class": "BullsCowsRule",
+        "pattern": "142"
+      },
+      {
+        "description": "the digits of the combination add up to exactly 8",
+        "class": "SumOfDigitsRule"
+      },
+      {
+        "description": "one digit is right but in the wrong place",
+        "class": "BullsCowsRule",
+        "pattern": "132"
+      },
+      {
+        "description": "all digits are wrong (none of these digits are in the combination)",
+        "class": "NoBullsCowsRule",
+        "pattern": "551"
+      }
+    ],
+    "difficulty": 7.2
   },
   {
     "answer": [
@@ -145,46 +189,6 @@
       }
     ],
     "difficulty": 1.8
-  },
-  {
-    "answer": [
-      "224"
-    ],
-    "alphabet": [
-      "1",
-      "2",
-      "3",
-      "4",
-      "5"
-    ],
-    "length": 3,
-    "rules": [
-      {
-        "description": "all digits are wrong (none of these digits are in the combination)",
-        "class": "NoBullsCowsRule",
-        "pattern": "113"
-      },
-      {
-        "description": "two digits are right but in the wrong place",
-        "class": "BullsCowsRule",
-        "pattern": "142"
-      },
-      {
-        "description": "the digits of the combination add up to exactly 8",
-        "class": "SumOfDigitsRule"
-      },
-      {
-        "description": "one digit is right but in the wrong place",
-        "class": "BullsCowsRule",
-        "pattern": "132"
-      },
-      {
-        "description": "all digits are wrong (none of these digits are in the combination)",
-        "class": "NoBullsCowsRule",
-        "pattern": "551"
-      }
-    ],
-    "difficulty": 7.2
   },
   {
     "answer": [
