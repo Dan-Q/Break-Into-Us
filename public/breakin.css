@@ -38,6 +38,19 @@ body, button {
   box-sizing: border-box;
 }
 
+a {
+  color: #ff12cf;
+  text-decoration: underline solid;
+}
+
+a:visited {
+  color: #5b00c8;
+}
+
+a:hover, a:active, a:focus {
+  text-decoration-style: double;
+}
+
 body {
   background: #fff;
   color: #333;
@@ -45,6 +58,10 @@ body {
   display: flex;
   flex-direction: column;
   margin: 0;
+}
+
+button {
+  cursor: pointer;
 }
 
 header, #instruction, #clues, #lock, #score, footer {
@@ -59,12 +76,10 @@ header {
 
 main {
   display: grid;
-  grid-template: "🎩 🎩" auto "◀ ▶" auto / 50% 50%;
+  grid-template: "◀ ▶" auto / 50% 50%;
   align-items: center;
-}
-
-#instruction {
-  grid-area: 🎩;
+  max-width: 960px;
+  margin: 0 auto;
 }
 
 #clues {
@@ -99,8 +114,14 @@ main {
   margin: 0 4px;
 }
 
+.clue-description {
+  font-size: 1.2rem;
+  margin-left: 1rem;
+}
+
 #lock {
   grid-area: ▶;
+  margin: 0 auto;
 }
 
 dialog {
@@ -123,27 +144,25 @@ dialog[open] {
 
 .dialog-contents {
   max-width: 960px;
+  padding: 1rem 0.5rem;
+}
+
+dialog button, .lock-controls button {
+  border: 1px solid #00862e;
+  border-radius: 1rem;
+  background: linear-gradient(#fff, #ecffb8) #ecffb8;
 }
 
 dialog button {
   font-size: 1.5rem;
   padding: 1rem 3rem;
-  border: 1px solid #00862e;
-  border-radius: 1rem;
-  background: #ecffb8;
-  cursor: pointer;
-  background: linear-gradient(#fff, #ecffb8) #ecffb8;
 }
 
 dialog button:hover, dialog button:active, dialog button:focus {
   box-shadow: inset 0px -2px 8px rgba(0,0,0,0.5);
 }
 
-template {
-  display: none;
-}
-
-.digit-value {
+template, .digit-value {
   display: none;
 }
 
@@ -160,6 +179,17 @@ template {
   height: 180px;
   border-radius: 100px 100px 0 0;
   margin: 0 64px;
+}
+
+#lock.open .padlock-shackle {
+  border-left-color: transparent;
+}
+
+#lock.wrong.padlock {
+  animation: shake 0.82s cubic-bezier(.36,.07,.19,.97) both;
+  transform: translate3d(0, 0, 0);
+  backface-visibility: hidden;
+  perspective: 1000px;
 }
 
 .padlock-body {
@@ -198,6 +228,7 @@ template {
 
 .spinner-digits .digit {
   padding: 0;
+  margin: 0;
   list-style: none;
   border: 2px solid black;
   border-radius: 6px;
@@ -227,8 +258,60 @@ template {
   justify-content: center;
 }
 
+.lock-controls button {
+  margin: 0.5rem 1rem 0;
+  padding: 0.5rem 1.5rem;
+  font-size: 1.25rem;
+}
+
+#instruction, #score {
+  text-align: center;
+}
+
+#instruction {
+  background: #cef1ff;
+  margin: 0.5rem 0 1rem;
+}
+
+#score {
+  background: #ffffce;
+  margin: 2em 0 0;
+}
+
+#score strong {
+  font-size: 1.75rem;
+  padding-right: 1.5rem;
+}
+
+footer {
+  margin-top: 2rem;
+  text-align: center;
+  color: #666;
+  font-size: 0.8rem;
+}
+
+
 @media (max-width: 720px) {
   main {
     grid-template: "🎩" auto "◀" auto "▶" auto / 100%;
+  }
+}
+
+
+@keyframes shake {
+  10%, 90% {
+    transform: translate3d(-1px, 0, 0);
+  }
+  
+  20%, 80% {
+    transform: translate3d(2px, 0, 0);
+  }
+
+  30%, 50%, 70% {
+    transform: translate3d(-4px, 0, 0);
+  }
+
+  40%, 60% {
+    transform: translate3d(4px, 0, 0);
   }
 }

@@ -182,6 +182,8 @@ class BullsCowsRule < Rule
   end
 
   def valid?
+    # bulls/cows rules with a nonzero number of bulls or cows shouldn't have duplicate digits in their pattern 'cos it CAN lead to ambiguity
+    return false if ((@target_bulls + @target_cows) > 0) && (digits.uniq.length < digits.length)
     # bulls-only rules are always valid
     return true if (@target_bulls > 0) && (@target_cows == 0)
     super
@@ -351,22 +353,39 @@ class Puzzle
   def data
     {
       answer: @answer,
-      alphabet: @alphabet.to_a,
+      alphabet: @alphabet.to_a.map(&:to_s),
       length: @length,
-      rules: @rules.map(&:data)
+      rules: @rules.shuffle.map(&:data),
+      difficulty: difficulty,
     }
   end
 end
 
 ###############################################################################
 
+# * alphabet size
+
+print 'Alphabet (0-9, 1-5)? '
+a = gets.strip
+alphabet = if a == ''
+  (0..9)
+elsif a =~ /^(\d)-(\d)$/
+  ($1.to_i..$2.to_i)
+else
+  a.upcase.chars
+end
+# * length
+print 'Length? '
+l = gets.strip
+length = l == '' ? 3 : l.to_i
+
 puzzle = Puzzle.new(
   # seed: 5478082426927421143456472927435492873712636496827853755134246912,
-  alphabet: (0..9),
-  length: 3,
+  alphabet: alphabet,
+  length: length,
   # options: { target_reduction_threshold: 0.7 },
 )
-print 'Keep? (^C = no, enter = yes)'
+print 'Keep? (^C = no, enter = yes) '
 gets
 puzzles = File.exists?(PUZZLES_FILE) ? JSON.parse(File.read(PUZZLES_FILE)) : []
 puzzles << puzzle.data

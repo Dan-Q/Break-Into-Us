@@ -5,10 +5,15 @@ const spinnerDigitHeight = 32; // px
 let state;
 let currentPuzzleNum;
 let puzzles;
+let solvedPuzzles = [];
+let sounds = { fail: null, unlock: null }
+
+function loadSounds(){
+  Object.keys(sounds).forEach(s=>sounds[s] = new Audio(`audio/${s}.mp3`))
+}
 
 function playSound(sound){
-  const audio = new Audio(`audio/${sound}.mp3`);
-  audio.play();
+  sounds[sound].play();
 }
 
 function siblingsBeforeAndAfter(el){
@@ -29,18 +34,19 @@ function siblingsBeforeAndAfter(el){
 }
 
 function recenterScrollingDigit(digit, centrepoint){
+  // support endless-scroll where possible
   const lis = [...digit.querySelectorAll('li')];
   const [before, after] = siblingsBeforeAndAfter(centrepoint);
   const diff = Math.abs(before.length - after.length);
   if(diff < 2) return;
   if(before.length > after.length){
     for(let i = 0; i < diff; i++){
-      console.log('moving top to bottom');
+      // move top to bottom
       digit.appendChild(digit.removeChild(lis[0]));
     }
   } else {
     for(let i = 0; i < diff; i++){
-      console.log('moving bottom to top');
+      // move bottom to top
       digit.insertBefore(digit.removeChild(lis[lis.length-1]), digit.firstChild);
     }
   }
@@ -97,7 +103,7 @@ function setUpDigitScrollButtons(){
           combo += digit.querySelectorAll('li')[Math.round(digit.scrollTop / spinnerDigitHeight)].dataset.value;
         });
       }
-      alert(combo);
+      attemptSolution(combo);
       return;
     }
   }, { capture: true });
@@ -121,13 +127,15 @@ function setUpDialogInteractions(){
   }, { capture: true });
 }
 
-function generatePadlock(digits = 3){
+function generatePadlock(){
   loadLockTemplate('padlock');
   let digitsHTML = '';
-  for(let i = 0; i < digits; i++){
+  for(let i = 0; i < currentPuzzle().length; i++){
     digitsHTML += spinnerDigitWrapperTemplate;
   }
   lock.querySelector('.padlock-body .digits').innerHTML = digitsHTML;
+  const digitLIs = currentPuzzle().alphabet.reverse().map(a=>`<li data-value="${a}">${a}</li>`).join('');
+  [...lock.querySelectorAll('.padlock-body .digit')].forEach(digit=>digit.innerHTML = digitLIs);
   setUpDigitIntersectionObservers();
 }
 
@@ -157,20 +165,58 @@ function currentPuzzle(){
   return puzzles[currentPuzzleNum];
 }
 
+function updateScore(){
+  const score = document.getElementById('score');
+  let totalScore = 0;
+  solvedPuzzles.forEach(pid=>totalScore+=puzzles[pid].difficulty);
+  score.innerHTML = `<p><strong>Score: ${totalScore}</strong> (${solvedPuzzles.length} of ${puzzles.length} locks opened).</p>`;
+}
+
+function renderInstructions(){
+  const instruction = document.getElementById('instruction');
+  let describeAlphabet = currentPuzzle().alphabet.join(', ');
+  if(parseInt(currentPuzzle().alphabet[0]) < parseInt(currentPuzzle().alphabet[currentPuzzle().alphabet.length - 1])) {
+    describeAlphabet = `from ${currentPuzzle().alphabet[0]}&mdash;${currentPuzzle().alphabet[currentPuzzle().alphabet.length - 1]}`;
+  }
+  let instructionsHTML = [];
+  if(currentPuzzle().instruction) instructionsHTML.push(currentPuzzle().instruction);
+  instructionsHTML.push(`The combination consists of ${currentPuzzle().length} values ${describeAlphabet}. Difficulty rating: ${currentPuzzle().difficulty}.`);
+  instruction.innerHTML = `<p>${instructionsHTML.join('<br>')}</p>`;
+}
+
 function renderClues(){
   const clues = document.getElementById('clues');
   let cluesHTML = ''
   currentPuzzle().rules.forEach(clue=>{
-    const digitsHTML = clue.pattern.split('').map(d=>`<span class="clue-digit">${d}</span>`).join('');
+    const digitsHTML = clue.pattern ? clue.pattern.split('').map(d=>`<span class="clue-digit">${d}</span>`).join('') : '';
     cluesHTML += `<li class="clue"><span class="clue-pattern clue-${clue.class}">${digitsHTML}</span><span class="clue-description">${clue.description}</span></li>`;
   });
   clues.innerHTML = cluesHTML;
 }
 
+function attemptSolution(combo){
+  if(currentPuzzle().answer.includes(combo)){
+    // correct answer
+    playSound('unlock');
+    lock.classList.add('open');
+    solvedPuzzles.push(currentPuzzleNum);
+    solvedPuzzles = Array.from(new Set(solvedPuzzles)); // remove duplicates
+    updateScore();
+  } else {
+    // wrong answer
+    lock.classList.add('wrong');
+    setTimeout(()=>lock.classList.remove('wrong'), 850);
+    playSound('fail');
+  }
+}
+
 function startPuzzle(puzzleNum){
   currentPuzzleNum = puzzleNum;
+  renderInstructions();
   renderClues();
-  generatePadlock(currentPuzzle().length);
+  lock.classList.remove('open');
+  generatePadlock();
+  updateScore();
   setState('play');
 }
 
@@ -178,6 +224,7 @@ function startGame(){
   startPuzzle(0);
 }
 
+loadSounds();
 setUpDialogInteractions();
 setUpDigitScrollButtons();
 setState('loading');
