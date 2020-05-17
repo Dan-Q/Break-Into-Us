@@ -219,7 +219,9 @@ function renderInstructions(){
   let instructionsHTML = [];
   if(currentPuzzle().instruction) instructionsHTML.push(currentPuzzle().instruction);
   instructionsHTML.push(`The combination consists of ${currentPuzzle().length} values ${describeAlphabet}. Difficulty rating: ${currentPuzzle().difficulty}.`);
-  instruction.innerHTML = `<h1>Lock ${(currentPuzzleNum + 1).toString().padStart(4, '0')}</h1><p>${instructionsHTML.join('<br>')}</p>`;
+  let lockTitle = (currentPuzzleNum + 1).toString().padStart(4, '0');
+  if(currentPuzzle().title) lockTitle += `: ${currentPuzzle().title}`;
+  instruction.innerHTML = `<h1>Lock ${lockTitle}</h1><p>${instructionsHTML.join('<br>')}</p>`;
 }
 
 function renderClues(){

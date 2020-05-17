@@ -1,5 +1,6 @@
 [
   {
+    "title": "Tutorial #1",
     "instruction": "Here's a simple lock to get you started. Can you work out how to open it?",
     "answer": [
       "222"
@@ -29,6 +30,7 @@
     "difficulty": 3.5
   },
   {
+    "title": "Tutorial #2",
     "answer": [
       "224"
     ],
