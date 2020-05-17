@@ -150,6 +150,29 @@ function anotherPuzzle(){
   }
 }
 
+function specificPuzzzle(){
+  let lockListHTML = '';
+  for(i = 0; i < puzzles.length; i++){
+    puzzle = puzzles[i];
+    let title = (i + 1).toString().padStart(4, '0');
+    if(puzzle.title) title += `: ${puzzle.title}`;
+    let status = '';
+    if(solvedPuzzles.includes(i)){
+      status = 'solved';
+    } else if(triedPuzzles.includes(i)){
+      status = 'attempted';
+    }
+    lockListHTML += `<tr>
+      <th>${title}</th>
+      <td>${puzzle.difficulty}</td>
+      <td>${status}</td>
+      <td><!-- actions --></td>
+    </tr>`;
+  }
+  setState('choose');
+  dialog.querySelector('#lock-list').innerHTML = lockListHTML;
+}
+
 function setUpScoreInteractions(){
   score.addEventListener('click', e=>{
     const button = e.target.closest('button');
@@ -158,6 +181,9 @@ function setUpScoreInteractions(){
     const action = button.dataset.action;
     if(action == 'another-puzzle'){
       anotherPuzzle();
+    }
+    if(action == 'specific-puzzle'){
+      specificPuzzzle();
     }
   }, { capture: true });
 }
