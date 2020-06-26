@@ -255,7 +255,8 @@ function updateScore(){
   let totalScore = 0;
   solvedPuzzles.forEach(pid=>totalScore+=puzzles[pid].difficulty);
   const percent = ((solvedPuzzles.length / puzzles.length) * 100).toFixed(1);
-  let scoreHTML = `<p><strong>Score: ${totalScore}</strong> ${solvedPuzzles.length} of ${puzzles.length} locks opened (${percent}%).</p>`;
+  const maxScore = puzzles.reduce((a,b) => a+b.difficulty, 0);
+  let scoreHTML = `<p><strong>Score: ${totalScore}</strong> ${solvedPuzzles.length} of ${puzzles.length} locks opened (${percent}%; max possible score ${maxScore})</p>`;
   if(solvedPuzzles.length > 0){
     scoreHTML += `<p class="score-buttons">Get: <button data-action="another-puzzle">Another lock</button> <button data-action="specific-puzzle">A specific lock</button></p>`;
   }

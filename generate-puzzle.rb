@@ -1,3 +1,4 @@
+#!/usr/bin/env ruby
 require 'json'
 
 PUZZLES_FILE = 'public/puzzles.json'
@@ -264,6 +265,61 @@ class ParityCountComparisonRule < Rule
   end
 end
 
+class DiffDigitsRule < Rule
+  def difficulty
+    8.0
+  end
+
+  def show_pattern
+    false
+  end
+
+  def diff_digits(combo = nil)
+    (combo || @pattern).chars.uniq.length
+  end
+
+  def matches?(combo)
+    diff_digits(combo) == diff_digits()
+  end
+
+  def description
+    "#{diff_digits()} different digits are used in the combination"
+  end
+
+  def valid?
+    true
+  end
+end
+
+class StaircaseRule < Rule
+  def difficulty
+    10.0
+  end
+
+  def show_pattern
+    false
+  end
+
+  def ascending?(combo = nil)
+    combo ||= @pattern
+    combo[0].ord.odd?
+  end
+
+  def matches?(combo)
+    digits = combo.chars.sort.join
+    digits.reverse! unless ascending?
+    digits == combo
+  end
+
+  def description
+    "the digits of the combination are in #{ascending?() ? 'ascending' : 'descending'} order (i.e. later digits are never #{ascending? ? 'lower' : 'higher'} than earlier ones)"
+  end
+
+  def valid?
+    true
+  end
+end
+
 class Puzzle
   attr_accessor :answer, :combos, :alphabet, :length, :rules
 
@@ -280,12 +336,13 @@ class Puzzle
   def default_rule_templates
     rule_templates = [
       { rule: BullsCowsRule.new(:template, 1, 'cows'), weighting: 12 },
-      { rule: NoBullsCowsRule.new(:template), limit: @length - 2, weighting: 4 },
-      { rule: NoBullsCowsRule.new(:template), limit: @length - 2, weighting: 4 },
+      { rule: NoBullsCowsRule.new(:template), limit: (@length > 4 ? 2 : @length - 2), weighting: 4 },
+      { rule: DiffDigitsRule.new(:template), limit: 1, weighting: 2 + @length }
     ]
     if @alphabet.to_a.all?{|digit| digit.to_s =~ /^[0-9]$/}
       rule_templates.push({ rule: SumOfDigitsRule.new(:template), limit: 1 })
       rule_templates.push({ rule: ParityCountComparisonRule.new(:template), limit: 1 })
+      rule_templates.push({ rule: StaircaseRule.new(:template), limit: 1 })
     end
     if @length > 2
       (@length - 2).times do |i|
@@ -347,7 +404,7 @@ class Puzzle
       break if @combos.filter_by(@rules).length == 1
     end
     @answer = @combos.filter_by(@rules)
-    puts "Answer: #{@answer} | Difficulty: #{difficulty}"
+    puts "Answer: #{@answer} | Difficulty: #{difficulty} | Digits Used: #{@answer[0].chars.uniq.length}"
   end
 
   def data
@@ -364,9 +421,13 @@ end
 ###############################################################################
 
 # * alphabet size
-
 print 'Alphabet (0-9, 1-5)? '
-a = gets.strip
+a = if ARGV[0]
+  puts ARGV[0].strip
+  ARGV[0].strip
+else
+  STDIN.gets.strip
+end
 alphabet = if a == ''
   (0..9)
 elsif a =~ /^(\d)-(\d)$/
@@ -376,7 +437,12 @@ else
 end
 # * length
 print 'Length? '
-l = gets.strip
+l =if ARGV[1]
+  puts ARGV[1].strip
+  ARGV[1].strip
+else
+  STDIN.gets.strip
+end
 length = l == '' ? 3 : l.to_i
 
 puzzle = Puzzle.new(
@@ -386,7 +452,7 @@ puzzle = Puzzle.new(
   # options: { target_reduction_threshold: 0.7 },
 )
 print 'Keep? (^C = no, enter = yes; optionally type a title) '
-title = gets.strip
+title = STDIN.gets.strip
 puzzle_data = puzzle.data
 puzzle_data[:title] = title if title != ''
 puzzles = File.exists?(PUZZLES_FILE) ? JSON.parse(File.read(PUZZLES_FILE)) : []

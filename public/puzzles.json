@@ -783,5 +783,1433 @@
     ],
     "difficulty": 8.4,
     "title": "Steady On"
+  },
+  {
+    "answer": [
+      "152"
+    ],
+    "alphabet": [
+      "0",
+      "1",
+      "2",
+      "3",
+      "4",
+      "5",
+      "6",
+      "7",
+      "8",
+      "9"
+    ],
+    "length": 3,
+    "rules": [
+      {
+        "description": "two digits are right but in the wrong place",
+        "class": "BullsCowsRule",
+        "pattern": "531"
+      },
+      {
+        "description": "one digit is right but in the wrong place",
+        "class": "BullsCowsRule",
+        "pattern": "276"
+      },
+      {
+        "description": "one digit is right but in the wrong place",
+        "class": "BullsCowsRule",
+        "pattern": "329"
+      },
+      {
+        "description": "one digit is right but in the wrong place",
+        "class": "BullsCowsRule",
+        "pattern": "413"
+      }
+    ],
+    "difficulty": 5.6,
+    "title": "Take a Breather"
+  },
+  {
+    "answer": [
+      "549"
+    ],
+    "alphabet": [
+      "0",
+      "1",
+      "2",
+      "3",
+      "4",
+      "5",
+      "6",
+      "7",
+      "8",
+      "9"
+    ],
+    "length": 3,
+    "rules": [
+      {
+        "description": "the digits of the combination add up to exactly 18",
+        "class": "SumOfDigitsRule"
+      },
+      {
+        "description": "the number of odd digits is greater than the number of even digits",
+        "class": "ParityCountComparisonRule"
+      },
+      {
+        "description": "one digit is right but in the wrong place",
+        "class": "BullsCowsRule",
+        "pattern": "962"
+      },
+      {
+        "description": "two digits are right but in the wrong place",
+        "class": "BullsCowsRule",
+        "pattern": "496"
+      },
+      {
+        "description": "all digits are wrong (none of these digits are in the combination)",
+        "class": "NoBullsCowsRule",
+        "pattern": "117"
+      }
+    ],
+    "difficulty": 30.8,
+    "title": "All The Clues You Need"
+  },
+  {
+    "answer": [
+      "427"
+    ],
+    "alphabet": [
+      "0",
+      "1",
+      "2",
+      "3",
+      "4",
+      "5",
+      "6",
+      "7",
+      "8",
+      "9"
+    ],
+    "length": 3,
+    "rules": [
+      {
+        "description": "one digit is right but in the wrong place",
+        "class": "BullsCowsRule",
+        "pattern": "182"
+      },
+      {
+        "description": "all digits are wrong (none of these digits are in the combination)",
+        "class": "NoBullsCowsRule",
+        "pattern": "355"
+      },
+      {
+        "description": "all digits are wrong (none of these digits are in the combination)",
+        "class": "NoBullsCowsRule",
+        "pattern": "109"
+      },
+      {
+        "description": "one digit is right but in the wrong place",
+        "class": "BullsCowsRule",
+        "pattern": "731"
+      },
+      {
+        "description": "one digit is right but in the wrong place",
+        "class": "BullsCowsRule",
+        "pattern": "945"
+      },
+      {
+        "description": "one digit is right but in the wrong place",
+        "class": "BullsCowsRule",
+        "pattern": "576"
+      }
+    ],
+    "difficulty": 8.4
+  },
+  {
+    "answer": [
+      "635"
+    ],
+    "alphabet": [
+      "0",
+      "1",
+      "2",
+      "3",
+      "4",
+      "5",
+      "6",
+      "7",
+      "8",
+      "9"
+    ],
+    "length": 3,
+    "rules": [
+      {
+        "description": "one digit is right but in the wrong place",
+        "class": "BullsCowsRule",
+        "pattern": "150"
+      },
+      {
+        "description": "one digit is right but in the wrong place",
+        "class": "BullsCowsRule",
+        "pattern": "384"
+      },
+      {
+        "description": "all digits are wrong (none of these digits are in the combination)",
+        "class": "NoBullsCowsRule",
+        "pattern": "202"
+      },
+      {
+        "description": "one digit is right but in the wrong place",
+        "class": "BullsCowsRule",
+        "pattern": "268"
+      },
+      {
+        "description": "all digits are wrong (none of these digits are in the combination)",
+        "class": "NoBullsCowsRule",
+        "pattern": "001"
+      },
+      {
+        "description": "one digit is right but in the wrong place",
+        "class": "BullsCowsRule",
+        "pattern": "476"
+      }
+    ],
+    "difficulty": 8.4
+  },
+  {
+    "answer": [
+      "784X"
+    ],
+    "alphabet": [
+      "1",
+      "2",
+      "3",
+      "4",
+      "5",
+      "6",
+      "7",
+      "8",
+      "9",
+      "0",
+      "X",
+      "Y",
+      "Z"
+    ],
+    "length": 4,
+    "rules": [
+      {
+        "description": "one digit is right and in the right place",
+        "class": "BullsCowsRule",
+        "pattern": "985Y"
+      },
+      {
+        "description": "two digits are right but in the wrong place",
+        "class": "BullsCowsRule",
+        "pattern": "6738"
+      },
+      {
+        "description": "one digit is right but in the wrong place",
+        "class": "BullsCowsRule",
+        "pattern": "6Z54"
+      },
+      {
+        "description": "one digit is right but in the wrong place",
+        "class": "BullsCowsRule",
+        "pattern": "4Y5Z"
+      },
+      {
+        "description": "all digits are wrong (none of these digits are in the combination)",
+        "class": "NoBullsCowsRule",
+        "pattern": "0200"
+      },
+      {
+        "description": "one digit is right but in the wrong place",
+        "class": "BullsCowsRule",
+        "pattern": "XZ50"
+      },
+      {
+        "description": "one digit is right but in the wrong place",
+        "class": "BullsCowsRule",
+        "pattern": "9675"
+      },
+      {
+        "description": "one digit is right but in the wrong place",
+        "class": "BullsCowsRule",
+        "pattern": "8360"
+      },
+      {
+        "description": "one digit is right but in the wrong place",
+        "class": "BullsCowsRule",
+        "pattern": "X639"
+      }
+    ],
+    "difficulty": 17.1,
+    "title": "Monster"
+  },
+  {
+    "answer": [
+      "0666"
+    ],
+    "alphabet": [
+      "1",
+      "2",
+      "3",
+      "4",
+      "5",
+      "6",
+      "7",
+      "8",
+      "9",
+      "0",
+      "X",
+      "Y",
+      "Z"
+    ],
+    "length": 4,
+    "rules": [
+      {
+        "description": "one digit is right but in the wrong place",
+        "class": "BullsCowsRule",
+        "pattern": "9740"
+      },
+      {
+        "description": "one digit is right but in the wrong place",
+        "class": "BullsCowsRule",
+        "pattern": "XY08"
+      },
+      {
+        "description": "two digits are right and in the right place",
+        "class": "BullsCowsRule",
+        "pattern": "06Y1"
+      },
+      {
+        "description": "all digits are wrong (none of these digits are in the combination)",
+        "class": "NoBullsCowsRule",
+        "pattern": "34Z4"
+      },
+      {
+        "description": "one digit is right but in the wrong place",
+        "class": "BullsCowsRule",
+        "pattern": "2408"
+      },
+      {
+        "description": "all digits are wrong (none of these digits are in the combination)",
+        "class": "NoBullsCowsRule",
+        "pattern": "1557"
+      }
+    ],
+    "difficulty": 11.4,
+    "title": "Mini Monster"
+  },
+  {
+    "answer": [
+      "352"
+    ],
+    "alphabet": [
+      "0",
+      "1",
+      "2",
+      "3",
+      "4",
+      "5",
+      "6",
+      "7",
+      "8",
+      "9"
+    ],
+    "length": 3,
+    "rules": [
+      {
+        "description": "one digit is right but in the wrong place",
+        "class": "BullsCowsRule",
+        "pattern": "630"
+      },
+      {
+        "description": "the digits of the combination add up to exactly 10",
+        "class": "SumOfDigitsRule"
+      },
+      {
+        "description": "all digits are wrong (none of these digits are in the combination)",
+        "class": "NoBullsCowsRule",
+        "pattern": "707"
+      },
+      {
+        "description": "one digit is right but in the wrong place",
+        "class": "BullsCowsRule",
+        "pattern": "105"
+      },
+      {
+        "description": "one digit is right and in the right place",
+        "class": "BullsCowsRule",
+        "pattern": "912"
+      }
+    ],
+    "difficulty": 12.6
+  },
+  {
+    "answer": [
+      "451"
+    ],
+    "alphabet": [
+      "0",
+      "1",
+      "2",
+      "3",
+      "4",
+      "5",
+      "6",
+      "7",
+      "8",
+      "9"
+    ],
+    "length": 3,
+    "rules": [
+      {
+        "description": "3 different digits are used in the combination",
+        "class": "DiffDigitsRule"
+      },
+      {
+        "description": "one digit is right but in the wrong place",
+        "class": "BullsCowsRule",
+        "pattern": "167"
+      },
+      {
+        "description": "one digit is right but in the wrong place",
+        "class": "BullsCowsRule",
+        "pattern": "634"
+      },
+      {
+        "description": "all digits are wrong (none of these digits are in the combination)",
+        "class": "NoBullsCowsRule",
+        "pattern": "900"
+      },
+      {
+        "description": "one digit is right but in the wrong place",
+        "class": "BullsCowsRule",
+        "pattern": "107"
+      },
+      {
+        "description": "one digit is right and in the right place",
+        "class": "BullsCowsRule",
+        "pattern": "753"
+      },
+      {
+        "description": "one digit is right but in the wrong place",
+        "class": "BullsCowsRule",
+        "pattern": "248"
+      },
+      {
+        "description": "one digit is right but in the wrong place",
+        "class": "BullsCowsRule",
+        "pattern": "572"
+      }
+    ],
+    "difficulty": 21.0,
+    "title": "Blockhead"
+  },
+  {
+    "answer": [
+      "55523"
+    ],
+    "alphabet": [
+      "1",
+      "2",
+      "3",
+      "4",
+      "5"
+    ],
+    "length": 5,
+    "rules": [
+      {
+        "description": "the number of odd digits is greater than the number of even digits",
+        "class": "ParityCountComparisonRule"
+      },
+      {
+        "description": "the digits of the combination add up to exactly 20",
+        "class": "SumOfDigitsRule"
+      },
+      {
+        "description": "three digits are right but in the wrong place",
+        "class": "BullsCowsRule",
+        "pattern": "32415"
+      },
+      {
+        "description": "three digits are right and in the right place",
+        "class": "BullsCowsRule",
+        "pattern": "14523"
+      },
+      {
+        "description": "3 different digits are used in the combination",
+        "class": "DiffDigitsRule"
+      },
+      {
+        "description": "three digits are right but in the wrong place",
+        "class": "BullsCowsRule",
+        "pattern": "14235"
+      }
+    ],
+    "difficulty": 40.3,
+    "title": "Five By Five [hard!]"
+  },
+  {
+    "answer": [
+      "430"
+    ],
+    "alphabet": [
+      "0",
+      "1",
+      "2",
+      "3",
+      "4",
+      "5",
+      "6",
+      "7",
+      "8",
+      "9"
+    ],
+    "length": 3,
+    "rules": [
+      {
+        "description": "one digit is right but in the wrong place",
+        "class": "BullsCowsRule",
+        "pattern": "563"
+      },
+      {
+        "description": "two digits are right but in the wrong place",
+        "class": "BullsCowsRule",
+        "pattern": "054"
+      },
+      {
+        "description": "3 different digits are used in the combination",
+        "class": "DiffDigitsRule"
+      },
+      {
+        "description": "the digits of the combination add up to exactly 7",
+        "class": "SumOfDigitsRule"
+      },
+      {
+        "description": "the digits of the combination are in descending order (i.e. later digits are never higher than earlier ones)",
+        "class": "StaircaseRule"
+      }
+    ],
+    "difficulty": 32.2,
+    "title": "Down the Stairs"
+  },
+  {
+    "answer": [
+      "134"
+    ],
+    "alphabet": [
+      "0",
+      "1",
+      "2",
+      "3",
+      "4",
+      "5",
+      "6",
+      "7",
+      "8",
+      "9"
+    ],
+    "length": 3,
+    "rules": [
+      {
+        "description": "the digits of the combination are in ascending order (i.e. later digits are never lower than earlier ones)",
+        "class": "StaircaseRule"
+      },
+      {
+        "description": "3 different digits are used in the combination",
+        "class": "DiffDigitsRule"
+      },
+      {
+        "description": "all digits are wrong (none of these digits are in the combination)",
+        "class": "NoBullsCowsRule",
+        "pattern": "527"
+      },
+      {
+        "description": "the digits of the combination add up to exactly 8",
+        "class": "SumOfDigitsRule"
+      }
+    ],
+    "difficulty": 32.2,
+    "title": "Up the Stairs"
+  },
+  {
+    "answer": [
+      "8873"
+    ],
+    "alphabet": [
+      "0",
+      "1",
+      "2",
+      "3",
+      "4",
+      "5",
+      "6",
+      "7",
+      "8",
+      "9"
+    ],
+    "length": 4,
+    "rules": [
+      {
+        "description": "three digits are right but in the wrong place",
+        "class": "BullsCowsRule",
+        "pattern": "1738"
+      },
+      {
+        "description": "one digit is right but in the wrong place",
+        "class": "BullsCowsRule",
+        "pattern": "5681"
+      },
+      {
+        "description": "3 different digits are used in the combination",
+        "class": "DiffDigitsRule"
+      },
+      {
+        "description": "the digits of the combination are in descending order (i.e. later digits are never higher than earlier ones)",
+        "class": "StaircaseRule"
+      },
+      {
+        "description": "one digit is right but in the wrong place",
+        "class": "BullsCowsRule",
+        "pattern": "3460"
+      }
+    ],
+    "difficulty": 33.6,
+    "title": "Long Staircase"
+  },
+  {
+    "title": "The Architect",
+    "answer": [
+      "DANQ"
+    ],
+    "alphabet": [
+      "A",
+      "B",
+      "C",
+      "D",
+      "H",
+      "M",
+      "N",
+      "Q"
+    ],
+    "length": 4,
+    "rules": [
+      {
+        "description": "two letters are right but in the wrong place",
+        "class": "BullsCowsRule",
+        "pattern": "QMBD"
+      },
+      {
+        "description": "two letters are right and in the right place",
+        "class": "BullsCowsRule",
+        "pattern": "DAMH"
+      },
+      {
+        "description": "one letter is right but in the wrong place",
+        "class": "BullsCowsRule",
+        "pattern": "CBMD"
+      },
+      {
+        "description": "one letter is right but in the wrong place",
+        "class": "BullsCowsRule",
+        "pattern": "MNHC"
+      },
+      {
+        "description": "one letter is right but in the wrong place",
+        "class": "BullsCowsRule",
+        "pattern": "HMBD"
+      },
+      {
+        "description": "two letters are right but in the wrong place",
+        "class": "BullsCowsRule",
+        "pattern": "CNQH"
+      }
+    ],
+    "difficulty": 7.0
+  },
+  {
+    "answer": [
+      "252"
+    ],
+    "alphabet": [
+      "0",
+      "1",
+      "2",
+      "3",
+      "4",
+      "5",
+      "6",
+      "7",
+      "8",
+      "9"
+    ],
+    "length": 3,
+    "rules": [
+      {
+        "description": "two digits are right but in the wrong place",
+        "class": "BullsCowsRule",
+        "pattern": "625"
+      },
+      {
+        "description": "one digit is right and in the right place",
+        "class": "BullsCowsRule",
+        "pattern": "842"
+      },
+      {
+        "description": "one digit is right but in the wrong place",
+        "class": "BullsCowsRule",
+        "pattern": "517"
+      },
+      {
+        "description": "2 different digits are used in the combination",
+        "class": "DiffDigitsRule"
+      }
+    ],
+    "difficulty": 15.4
+  },
+  {
+    "answer": [
+      "962"
+    ],
+    "alphabet": [
+      "0",
+      "1",
+      "2",
+      "3",
+      "4",
+      "5",
+      "6",
+      "7",
+      "8",
+      "9"
+    ],
+    "length": 3,
+    "rules": [
+      {
+        "description": "one digit is right but in the wrong place",
+        "class": "BullsCowsRule",
+        "pattern": "637"
+      },
+      {
+        "description": "all digits are wrong (none of these digits are in the combination)",
+        "class": "NoBullsCowsRule",
+        "pattern": "480"
+      },
+      {
+        "description": "the number of even digits is greater than the number of odd digits",
+        "class": "ParityCountComparisonRule"
+      },
+      {
+        "description": "the digits of the combination are in descending order (i.e. later digits are never higher than earlier ones)",
+        "class": "StaircaseRule"
+      },
+      {
+        "description": "3 different digits are used in the combination",
+        "class": "DiffDigitsRule"
+      },
+      {
+        "description": "one digit is right but in the wrong place",
+        "class": "BullsCowsRule",
+        "pattern": "321"
+      }
+    ],
+    "difficulty": 43.4,
+    "title": "Hardcore"
+  },
+  {
+    "answer": [
+      "%+@"
+    ],
+    "alphabet": [
+      "-",
+      "=",
+      "+",
+      "*",
+      "&",
+      "%",
+      "$",
+      "@"
+    ],
+    "length": 3,
+    "rules": [
+      {
+        "description": "two symbols are right but in the wrong place",
+        "class": "BullsCowsRule",
+        "pattern": "@*%"
+      },
+      {
+        "description": "one symbol is right but in the wrong place",
+        "class": "BullsCowsRule",
+        "pattern": "+&$"
+      },
+      {
+        "description": "all symbols are wrong (none of these symbols are in the combination)",
+        "class": "NoBullsCowsRule",
+        "pattern": "=**"
+      },
+      {
+        "description": "one symbol is right but in the wrong place",
+        "class": "BullsCowsRule",
+        "pattern": "=*+"
+      }
+    ],
+    "difficulty": 6.8,
+    "title": "Symbolic"
+  },
+  {
+    "answer": [
+      "55679"
+    ],
+    "alphabet": [
+      "0",
+      "1",
+      "2",
+      "3",
+      "4",
+      "5",
+      "6",
+      "7",
+      "8",
+      "9"
+    ],
+    "length": 5,
+    "rules": [
+      {
+        "description": "all digits are wrong (none of these digits are in the combination)",
+        "class": "NoBullsCowsRule",
+        "pattern": "32440"
+      },
+      {
+        "description": "4 different digits are used in the combination",
+        "class": "DiffDigitsRule"
+      },
+      {
+        "description": "the digits of the combination are in ascending order (i.e. later digits are never lower than earlier ones)",
+        "class": "StaircaseRule"
+      },
+      {
+        "description": "the digits of the combination add up to exactly 32",
+        "class": "SumOfDigitsRule"
+      },
+      {
+        "description": "all digits are wrong (none of these digits are in the combination)",
+        "class": "NoBullsCowsRule",
+        "pattern": "01884"
+      },
+      {
+        "description": "two digits are right but in the wrong place",
+        "class": "BullsCowsRule",
+        "pattern": "43952"
+      }
+    ],
+    "difficulty": 66.6,
+    "title": "Insanity [hard!]"
+  },
+  {
+    "answer": [
+      "758"
+    ],
+    "alphabet": [
+      "0",
+      "1",
+      "2",
+      "3",
+      "4",
+      "5",
+      "6",
+      "7",
+      "8",
+      "9"
+    ],
+    "length": 3,
+    "rules": [
+      {
+        "description": "one digit is right and in the right place",
+        "class": "BullsCowsRule",
+        "pattern": "712"
+      },
+      {
+        "description": "one digit is right but in the wrong place",
+        "class": "BullsCowsRule",
+        "pattern": "289"
+      },
+      {
+        "description": "all digits are wrong (none of these digits are in the combination)",
+        "class": "NoBullsCowsRule",
+        "pattern": "214"
+      },
+      {
+        "description": "the digits of the combination add up to exactly 20",
+        "class": "SumOfDigitsRule"
+      }
+    ],
+    "difficulty": 18.2,
+    "title": "Joyful"
+  },
+  {
+    "answer": [
+      "55555"
+    ],
+    "alphabet": [
+      "1",
+      "2",
+      "3",
+      "4",
+      "5"
+    ],
+    "length": 5,
+    "rules": [
+      {
+        "description": "all digits are wrong (none of these digits are in the combination)",
+        "class": "NoBullsCowsRule",
+        "pattern": "32214"
+      },
+      {
+        "description": "all digits are wrong (none of these digits are in the combination)",
+        "class": "NoBullsCowsRule",
+        "pattern": "42434"
+      }
+    ],
+    "difficulty": 1.6,
+    "title": "All The Fives"
+  },
+  {
+    "answer": [
+      "2347"
+    ],
+    "alphabet": [
+      "1",
+      "2",
+      "3",
+      "4",
+      "5",
+      "6",
+      "7"
+    ],
+    "length": 4,
+    "rules": [
+      {
+        "description": "two digits are right but in the wrong place",
+        "class": "BullsCowsRule",
+        "pattern": "1726"
+      },
+      {
+        "description": "three digits are right but in the wrong place",
+        "class": "BullsCowsRule",
+        "pattern": "6423"
+      },
+      {
+        "description": "4 different digits are used in the combination",
+        "class": "DiffDigitsRule"
+      },
+      {
+        "description": "the digits of the combination are in ascending order (i.e. later digits are never lower than earlier ones)",
+        "class": "StaircaseRule"
+      }
+    ],
+    "difficulty": 26.0,
+    "title": "Seventh Staircase"
+  },
+  {
+    "answer": [
+      "456"
+    ],
+    "alphabet": [
+      "1",
+      "2",
+      "3",
+      "4",
+      "5",
+      "6",
+      "7",
+      "8",
+      "9"
+    ],
+    "length": 3,
+    "rules": [
+      {
+        "description": "all digits are wrong (none of these digits are in the combination)",
+        "class": "NoBullsCowsRule",
+        "pattern": "977"
+      },
+      {
+        "description": "the digits of the combination are in ascending order (i.e. later digits are never lower than earlier ones)",
+        "class": "StaircaseRule"
+      },
+      {
+        "description": "one digit is right but in the wrong place",
+        "class": "BullsCowsRule",
+        "pattern": "975"
+      },
+      {
+        "description": "one digit is right but in the wrong place",
+        "class": "BullsCowsRule",
+        "pattern": "521"
+      },
+      {
+        "description": "one digit is right and in the right place",
+        "class": "BullsCowsRule",
+        "pattern": "836"
+      }
+    ],
+    "difficulty": 18.2
+  },
+  {
+    "answer": [
+      "875"
+    ],
+    "alphabet": [
+      "1",
+      "2",
+      "3",
+      "4",
+      "5",
+      "6",
+      "7",
+      "8",
+      "9"
+    ],
+    "length": 3,
+    "rules": [
+      {
+        "description": "one digit is right and in the right place",
+        "class": "BullsCowsRule",
+        "pattern": "839"
+      },
+      {
+        "description": "the number of odd digits is greater than the number of even digits",
+        "class": "ParityCountComparisonRule"
+      },
+      {
+        "description": "one digit is right and in the right place",
+        "class": "BullsCowsRule",
+        "pattern": "235"
+      },
+      {
+        "description": "3 different digits are used in the combination",
+        "class": "DiffDigitsRule"
+      },
+      {
+        "description": "all digits are wrong (none of these digits are in the combination)",
+        "class": "NoBullsCowsRule",
+        "pattern": "216"
+      },
+      {
+        "description": "the digits of the combination are in descending order (i.e. later digits are never higher than earlier ones)",
+        "class": "StaircaseRule"
+      },
+      {
+        "description": "two digits are right but in the wrong place",
+        "class": "BullsCowsRule",
+        "pattern": "387"
+      }
+    ],
+    "difficulty": 41.6
+  },
+  {
+    "answer": [
+      "328"
+    ],
+    "alphabet": [
+      "1",
+      "2",
+      "3",
+      "4",
+      "5",
+      "6",
+      "7",
+      "8",
+      "9"
+    ],
+    "length": 3,
+    "rules": [
+      {
+        "description": "one digit is right but in the wrong place",
+        "class": "BullsCowsRule",
+        "pattern": "439"
+      },
+      {
+        "description": "one digit is right but in the wrong place",
+        "class": "BullsCowsRule",
+        "pattern": "134"
+      },
+      {
+        "description": "all digits are wrong (none of these digits are in the combination)",
+        "class": "NoBullsCowsRule",
+        "pattern": "676"
+      },
+      {
+        "description": "one digit is right but in the wrong place",
+        "class": "BullsCowsRule",
+        "pattern": "173"
+      },
+      {
+        "description": "one digit is right but in the wrong place",
+        "class": "BullsCowsRule",
+        "pattern": "952"
+      },
+      {
+        "description": "one digit is right but in the wrong place",
+        "class": "BullsCowsRule",
+        "pattern": "186"
+      }
+    ],
+    "difficulty": 7.8,
+    "title": "Reduce"
+  },
+  {
+    "answer": [
+      "291"
+    ],
+    "alphabet": [
+      "1",
+      "2",
+      "3",
+      "4",
+      "5",
+      "6",
+      "7",
+      "8",
+      "9"
+    ],
+    "length": 3,
+    "rules": [
+      {
+        "description": "one digit is right but in the wrong place",
+        "class": "BullsCowsRule",
+        "pattern": "625"
+      },
+      {
+        "description": "all digits are wrong (none of these digits are in the combination)",
+        "class": "NoBullsCowsRule",
+        "pattern": "338"
+      },
+      {
+        "description": "one digit is right but in the wrong place",
+        "class": "BullsCowsRule",
+        "pattern": "728"
+      },
+      {
+        "description": "one digit is right but in the wrong place",
+        "class": "BullsCowsRule",
+        "pattern": "138"
+      },
+      {
+        "description": "two digits are right but in the wrong place",
+        "class": "BullsCowsRule",
+        "pattern": "629"
+      },
+      {
+        "description": "one digit is right but in the wrong place",
+        "class": "BullsCowsRule",
+        "pattern": "958"
+      }
+    ],
+    "difficulty": 7.8,
+    "title": "Wrong Place"
+  },
+  {
+    "answer": [
+      "761"
+    ],
+    "alphabet": [
+      "1",
+      "2",
+      "3",
+      "4",
+      "5",
+      "6",
+      "7",
+      "8",
+      "9"
+    ],
+    "length": 3,
+    "rules": [
+      {
+        "description": "3 different digits are used in the combination",
+        "class": "DiffDigitsRule"
+      },
+      {
+        "description": "all digits are wrong (none of these digits are in the combination)",
+        "class": "NoBullsCowsRule",
+        "pattern": "852"
+      },
+      {
+        "description": "the digits of the combination are in descending order (i.e. later digits are never higher than earlier ones)",
+        "class": "StaircaseRule"
+      },
+      {
+        "description": "two digits are right but in the wrong place",
+        "class": "BullsCowsRule",
+        "pattern": "196"
+      },
+      {
+        "description": "the digits of the combination add up to exactly 14",
+        "class": "SumOfDigitsRule"
+      },
+      {
+        "description": "one digit is right but in the wrong place",
+        "class": "BullsCowsRule",
+        "pattern": "346"
+      }
+    ],
+    "difficulty": 36.4,
+    "title": "Exactly as Hard as it Looks?"
+  },
+  {
+    "answer": [
+      "139"
+    ],
+    "alphabet": [
+      "1",
+      "2",
+      "3",
+      "4",
+      "5",
+      "6",
+      "7",
+      "8",
+      "9"
+    ],
+    "length": 3,
+    "rules": [
+      {
+        "description": "the digits of the combination are in ascending order (i.e. later digits are never lower than earlier ones)",
+        "class": "StaircaseRule"
+      },
+      {
+        "description": "two digits are right but in the wrong place",
+        "class": "BullsCowsRule",
+        "pattern": "593"
+      },
+      {
+        "description": "3 different digits are used in the combination",
+        "class": "DiffDigitsRule"
+      },
+      {
+        "description": "the digits of the combination add up to exactly 13",
+        "class": "SumOfDigitsRule"
+      }
+    ],
+    "difficulty": 32.5,
+    "title": "You Can Do This!"
+  },
+  {
+    "answer": [
+      "583"
+    ],
+    "alphabet": [
+      "1",
+      "2",
+      "3",
+      "4",
+      "5",
+      "6",
+      "7",
+      "8",
+      "9"
+    ],
+    "length": 3,
+    "rules": [
+      {
+        "description": "one digit is right but in the wrong place",
+        "class": "BullsCowsRule",
+        "pattern": "872"
+      },
+      {
+        "description": "one digit is right but in the wrong place",
+        "class": "BullsCowsRule",
+        "pattern": "478"
+      },
+      {
+        "description": "one digit is right but in the wrong place",
+        "class": "BullsCowsRule",
+        "pattern": "396"
+      },
+      {
+        "description": "all digits are wrong (none of these digits are in the combination)",
+        "class": "NoBullsCowsRule",
+        "pattern": "479"
+      },
+      {
+        "description": "one digit is right but in the wrong place",
+        "class": "BullsCowsRule",
+        "pattern": "234"
+      },
+      {
+        "description": "one digit is right but in the wrong place",
+        "class": "BullsCowsRule",
+        "pattern": "248"
+      },
+      {
+        "description": "one digit is right but in the wrong place",
+        "class": "BullsCowsRule",
+        "pattern": "148"
+      }
+    ],
+    "difficulty": 9.1
+  },
+  {
+    "answer": [
+      "816"
+    ],
+    "alphabet": [
+      "1",
+      "2",
+      "3",
+      "4",
+      "5",
+      "6",
+      "7",
+      "8",
+      "9"
+    ],
+    "length": 3,
+    "rules": [
+      {
+        "description": "one digit is right but in the wrong place",
+        "class": "BullsCowsRule",
+        "pattern": "675"
+      },
+      {
+        "description": "one digit is right but in the wrong place",
+        "class": "BullsCowsRule",
+        "pattern": "469"
+      },
+      {
+        "description": "one digit is right but in the wrong place",
+        "class": "BullsCowsRule",
+        "pattern": "562"
+      },
+      {
+        "description": "one digit is right but in the wrong place",
+        "class": "BullsCowsRule",
+        "pattern": "982"
+      },
+      {
+        "description": "one digit is right but in the wrong place",
+        "class": "BullsCowsRule",
+        "pattern": "951"
+      },
+      {
+        "description": "one digit is right but in the wrong place",
+        "class": "BullsCowsRule",
+        "pattern": "142"
+      },
+      {
+        "description": "3 different digits are used in the combination",
+        "class": "DiffDigitsRule"
+      }
+    ],
+    "difficulty": 18.2
+  },
+  {
+    "answer": [
+      "56"
+    ],
+    "alphabet": [
+      "1",
+      "2",
+      "3",
+      "4",
+      "5",
+      "6"
+    ],
+    "length": 2,
+    "rules": [
+      {
+        "description": "the digits of the combination are in ascending order (i.e. later digits are never lower than earlier ones)",
+        "class": "StaircaseRule"
+      },
+      {
+        "description": "the digits of the combination add up to exactly 11",
+        "class": "SumOfDigitsRule"
+      }
+    ],
+    "difficulty": 12.8,
+    "title": "Engage Brain to Solve"
+  },
+  {
+    "answer": [
+      "JLHM"
+    ],
+    "alphabet": [
+      "A",
+      "B",
+      "C",
+      "D",
+      "E",
+      "F",
+      "G",
+      "H",
+      "I",
+      "J",
+      "K",
+      "L",
+      "M"
+    ],
+    "length": 4,
+    "rules": [
+      {
+        "description": "two letters are right but in the wrong place",
+        "class": "BullsCowsRule",
+        "pattern": "FJMI"
+      },
+      {
+        "description": "one letter is right but in the wrong place",
+        "class": "BullsCowsRule",
+        "pattern": "LKCI"
+      },
+      {
+        "description": "one letter is right but in the wrong place",
+        "class": "BullsCowsRule",
+        "pattern": "HKBD"
+      },
+      {
+        "description": "all letters are wrong (none of these letters are in the combination)",
+        "class": "NoBullsCowsRule",
+        "pattern": "CBBG"
+      },
+      {
+        "description": "one letter is right but in the wrong place",
+        "class": "BullsCowsRule",
+        "pattern": "MIKC"
+      },
+      {
+        "description": "one letter is right but in the wrong place",
+        "class": "BullsCowsRule",
+        "pattern": "CEMB"
+      },
+      {
+        "description": "all letters are wrong (none of these letters are in the combination)",
+        "class": "NoBullsCowsRule",
+        "pattern": "FAGI"
+      },
+      {
+        "description": "one letter is right but in the wrong place",
+        "class": "BullsCowsRule",
+        "pattern": "BHFG"
+      },
+      {
+        "description": "one letter is right but in the wrong place",
+        "class": "BullsCowsRule",
+        "pattern": "GBLK"
+      },
+      {
+        "description": "one letter is right but in the wrong place",
+        "class": "BullsCowsRule",
+        "pattern": "BHED"
+      },
+      {
+        "description": "two letters are right but in the wrong place",
+        "class": "BullsCowsRule",
+        "pattern": "GKML"
+      },
+      {
+        "description": "4 different letters are used in the combination",
+        "class": "DiffDigitsRule"
+      }
+    ],
+    "difficulty": 36.1,
+    "title": "Ludicrous [hard!]"
   }
 ]
