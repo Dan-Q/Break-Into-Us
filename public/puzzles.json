@@ -730,7 +730,58 @@
         "pattern": "380"
       }
     ],
-
     "difficulty": 7.0
+  },
+  {
+    "answer": [
+      "061"
+    ],
+    "alphabet": [
+      "0",
+      "1",
+      "2",
+      "3",
+      "4",
+      "5",
+      "6",
+      "7",
+      "8",
+      "9"
+    ],
+    "length": 3,
+    "rules": [
+      {
+        "description": "all digits are wrong (none of these digits are in the combination)",
+        "class": "NoBullsCowsRule",
+        "pattern": "294"
+      },
+      {
+        "description": "one digit is right and in the right place",
+        "class": "BullsCowsRule",
+        "pattern": "871"
+      },
+      {
+        "description": "one digit is right but in the wrong place",
+        "class": "BullsCowsRule",
+        "pattern": "687"
+      },
+      {
+        "description": "one digit is right but in the wrong place",
+        "class": "BullsCowsRule",
+        "pattern": "480"
+      },
+      {
+        "description": "all digits are wrong (none of these digits are in the combination)",
+        "class": "NoBullsCowsRule",
+        "pattern": "338"
+      },
+      {
+        "description": "one digit is right but in the wrong place",
+        "class": "BullsCowsRule",
+        "pattern": "450"
+      }
+    ],
+    "difficulty": 8.4,
+    "title": "Steady On"
   }
 ]

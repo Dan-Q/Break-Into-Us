@@ -386,9 +386,9 @@ puzzle = Puzzle.new(
   # options: { target_reduction_threshold: 0.7 },
 )
 print 'Keep? (^C = no, enter = yes; optionally type a title) '
-title = gets
+title = gets.strip
 puzzle_data = puzzle.data
-puzzle_data.title = title if title != ''
+puzzle_data[:title] = title if title != ''
 puzzles = File.exists?(PUZZLES_FILE) ? JSON.parse(File.read(PUZZLES_FILE)) : []
 puzzles << puzzle_data
 File.open(PUZZLES_FILE, 'w'){|f| f.puts (JSON_PRETTY_PRINT ? JSON.pretty_generate(puzzles) : puzzles.to_json)}
