@@ -361,6 +361,17 @@ class Puzzle
   end
 end
 
+o = Puzzle.new
+o.rules = [
+  BullsCowsRule.new('682', 1, 'bull'),
+  BullsCowsRule.new('614', 1, 'cow'),
+  BullsCowsRule.new('206', 2, 'cows'),
+  NoBullsCowsRule.new('738'),
+  BullsCowsRule.new('380', 1, 'cow'),
+]
+puts JSON.pretty_generate(o.data)
+exit
+
 ###############################################################################
 
 # * alphabet size
@@ -385,10 +396,12 @@ puzzle = Puzzle.new(
   length: length,
   # options: { target_reduction_threshold: 0.7 },
 )
-print 'Keep? (^C = no, enter = yes) '
-gets
+print 'Keep? (^C = no, enter = yes; optionally type a title) '
+title = gets
+puzzle_data = puzzle.data
+puzzle_data.title = title if title != ''
 puzzles = File.exists?(PUZZLES_FILE) ? JSON.parse(File.read(PUZZLES_FILE)) : []
-puzzles << puzzle.data
+puzzles << puzzle_data
 File.open(PUZZLES_FILE, 'w'){|f| f.puts (JSON_PRETTY_PRINT ? JSON.pretty_generate(puzzles) : puzzles.to_json)}
 
 ###############################################################################
