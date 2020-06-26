@@ -361,17 +361,6 @@ class Puzzle
   end
 end
 
-o = Puzzle.new
-o.rules = [
-  BullsCowsRule.new('682', 1, 'bull'),
-  BullsCowsRule.new('614', 1, 'cow'),
-  BullsCowsRule.new('206', 2, 'cows'),
-  NoBullsCowsRule.new('738'),
-  BullsCowsRule.new('380', 1, 'cow'),
-]
-puts JSON.pretty_generate(o.data)
-exit
-
 ###############################################################################
 
 # * alphabet size
