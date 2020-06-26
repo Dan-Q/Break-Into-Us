@@ -31,6 +31,7 @@
   },
   {
     "title": "Tutorial #2",
+    "instruction": "This one's a little bit harder than the first. I've put the clues in a convenient order for you: you might not need the last clue.",
     "answer": [
       "224"
     ],
@@ -44,9 +45,18 @@
     "length": 3,
     "rules": [
       {
+        "description": "the digits of the combination add up to exactly 8",
+        "class": "SumOfDigitsRule"
+      },
+      {
         "description": "all digits are wrong (none of these digits are in the combination)",
         "class": "NoBullsCowsRule",
         "pattern": "113"
+      },
+      {
+        "description": "all digits are wrong (none of these digits are in the combination)",
+        "class": "NoBullsCowsRule",
+        "pattern": "551"
       },
       {
         "description": "two digits are right but in the wrong place",
@@ -54,18 +64,9 @@
         "pattern": "142"
       },
       {
-        "description": "the digits of the combination add up to exactly 8",
-        "class": "SumOfDigitsRule"
-      },
-      {
         "description": "one digit is right but in the wrong place",
         "class": "BullsCowsRule",
         "pattern": "132"
-      },
-      {
-        "description": "all digits are wrong (none of these digits are in the combination)",
-        "class": "NoBullsCowsRule",
-        "pattern": "551"
       }
     ],
     "difficulty": 7.2
@@ -173,6 +174,7 @@
     "difficulty": 8.4
   },
   {
+    "title": "Well Duh",
     "answer": [
       "555"
     ],
@@ -193,6 +195,7 @@
     "difficulty": 1.8
   },
   {
+    "title": "Easiest Lock Ever?",
     "answer": [
       "111"
     ],
@@ -213,6 +216,7 @@
     "difficulty": 1
   },
   {
+    "title": "Simple Permutations",
     "answer": [
       "313"
     ],
@@ -248,6 +252,7 @@
     "difficulty": 5.4
   },
   {
+    "title": "Cruel",
     "answer": [
       "5552"
     ],
@@ -278,6 +283,7 @@
     "difficulty": 13.2
   },
   {
+    "title": "Headscratcher",
     "answer": [
       "4332"
     ],
@@ -322,6 +328,7 @@
     "difficulty": 22.0
   },
   {
+    "title": "Apples through Giraffes",
     "answer": [
       "BBA"
     ],
@@ -337,27 +344,27 @@
     "length": 3,
     "rules": [
       {
-        "description": "one digit is right but in the wrong place",
+        "description": "one letter is right but in the wrong place",
         "class": "BullsCowsRule",
         "pattern": "AEC"
       },
       {
-        "description": "all digits are wrong (none of these digits are in the combination)",
+        "description": "all letters are wrong (none of these letters are in the combination)",
         "class": "NoBullsCowsRule",
         "pattern": "DFF"
       },
       {
-        "description": "one digit is right but in the wrong place",
+        "description": "one letter is right but in the wrong place",
         "class": "BullsCowsRule",
         "pattern": "CGB"
       },
       {
-        "description": "one digit is right but in the wrong place",
+        "description": "one letter is right but in the wrong place",
         "class": "BullsCowsRule",
         "pattern": "FAE"
       },
       {
-        "description": "all digits are wrong (none of these digits are in the combination)",
+        "description": "all letters are wrong (none of these letters are in the combination)",
         "class": "NoBullsCowsRule",
         "pattern": "EDE"
       }
@@ -380,27 +387,27 @@
     "length": 3,
     "rules": [
       {
-        "description": "one digit is right and in the right place",
+        "description": "one letter is right and in the right place",
         "class": "BullsCowsRule",
         "pattern": "GBE"
       },
       {
-        "description": "one digit is right but in the wrong place",
+        "description": "one letter is right but in the wrong place",
         "class": "BullsCowsRule",
         "pattern": "CGD"
       },
       {
-        "description": "all digits are wrong (none of these digits are in the combination)",
+        "description": "all letters are wrong (none of these letters are in the combination)",
         "class": "NoBullsCowsRule",
         "pattern": "CCD"
       },
       {
-        "description": "two digits are right but in the wrong place",
+        "description": "two letters are right but in the wrong place",
         "class": "BullsCowsRule",
         "pattern": "DGF"
       },
       {
-        "description": "one digit is right and in the right place",
+        "description": "one letter is right and in the right place",
         "class": "BullsCowsRule",
         "pattern": "BDG"
       }
@@ -676,5 +683,54 @@
       }
     ],
     "difficulty": 10.2
+  },
+  {
+    "title": "The Original",
+    "instruction": "This particular lock puzzle was the original inspiration for this game!",
+    "answer": [
+      "042"
+    ],
+    "alphabet": [
+      "0",
+      "1",
+      "2",
+      "3",
+      "4",
+      "5",
+      "6",
+      "7",
+      "8",
+      "9"
+    ],
+    "length": 3,
+    "rules": [
+      {
+        "description": "one digit is right and in the right place",
+        "class": "BullsCowsRule",
+        "pattern": "682"
+      },
+      {
+        "description": "one digit is right but in the wrong place",
+        "class": "BullsCowsRule",
+        "pattern": "614"
+      },
+      {
+        "description": "two digits are right but in the wrong place",
+        "class": "BullsCowsRule",
+        "pattern": "206"
+      },
+      {
+        "description": "all digits are wrong (none of these digits are in the combination)",
+        "class": "NoBullsCowsRule",
+        "pattern": "738"
+      },
+      {
+        "description": "one digit is right but in the wrong place",
+        "class": "BullsCowsRule",
+        "pattern": "380"
+      }
+    ],
+
+    "difficulty": 7.0
   }
 ]
