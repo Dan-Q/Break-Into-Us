@@ -1,3 +1,7 @@
+'use strict';
+
+if(navigator.serviceWorker) navigator.serviceWorker.register('sw.js', { scope: '/' });
+
 const lock = document.getElementById('lock');
 const dialog = document.querySelector('dialog');
 const score = document.getElementById('score');
@@ -166,12 +170,14 @@ function load(){
   } else {
     currentPuzzleNum = 0;
   }
+  if(!(solvedPuzzles instanceof Array)) solvedPuzzles = [];
+  if(!(triedPuzzles instanceof Array)) triedPuzzles = [];
 }
 
 function specificPuzzzle(){
   let lockListHTML = '';
-  for(i = 0; i < puzzles.length; i++){
-    puzzle = puzzles[i];
+  for(let i = 0; i < puzzles.length; i++){
+    const puzzle = puzzles[i];
     let title = (i + 1).toString().padStart(lockIdPadLength, '0');
     if(puzzle.title) title += `: ${puzzle.title}`;
     let status = '';
@@ -227,14 +233,14 @@ function generatePadlock(){
 
 function renderState(){
   if(state == 'play'){
-    if (typeof dialog.close === "function") {
+    if ((typeof dialog.close === "function") && dialog.open) {
       dialog.close();
     } else {
       dialog.removeAttribute('open');
     }
   } else {
     dialog.innerHTML = document.getElementById(state).innerHTML;
-    if (typeof dialog.showModal === "function") {
+    if ((typeof dialog.showModal === "function") && !dialog.open) {
       dialog.showModal();
     } else {
       dialog.setAttribute('open', true);
@@ -253,10 +259,13 @@ function currentPuzzle(){
 
 function updateScore(){
   let totalScore = 0;
-  solvedPuzzles.forEach(pid=>totalScore+=puzzles[pid].difficulty);
+  solvedPuzzles.forEach(pid=>{
+    totalScore += puzzles[pid].difficulty;
+  });
   const percent = ((solvedPuzzles.length / puzzles.length) * 100).toFixed(1);
   const maxScore = puzzles.reduce((a,b) => a+b.difficulty, 0);
-  let scoreHTML = `<p><strong>Score: ${totalScore}</strong> ${solvedPuzzles.length} of ${puzzles.length} locks opened (${percent}%; max possible score ${maxScore})</p>`;
+  totalScore = totalScore.toFixed(1);
+  let scoreHTML = `<p><strong><abbr title="Your score is determined by the number and difficulty of locks you're broken into. Break into more or harder locks to increase it.">Score</abbr>: ${totalScore}</strong> ${solvedPuzzles.length} of ${puzzles.length} locks opened (${percent}%; max possible score ${maxScore})</p>`;
   if(solvedPuzzles.length > 0){
     scoreHTML += `<p class="score-buttons">Get: <button data-action="another-puzzle">Another lock</button> <button data-action="specific-puzzle">A specific lock</button></p>`;
   }
