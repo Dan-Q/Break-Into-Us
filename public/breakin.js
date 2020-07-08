@@ -105,8 +105,9 @@ function setUpDigitScrollButtons(){
     }
     if(button.classList.contains('unlock')){
       let combo = [...lock.querySelectorAll('input')].map(input=>input.value).join('');
-      if(combo == ''){
+      if(combo.length < lock.querySelectorAll('input').length){
         // if the IntersectionObserver fails, e.g. on Chrome for Android, we might not have a value: get one the hard way
+        // also occurs for non-numeric digits
         [...lock.querySelectorAll('.digit')].forEach(digit=>{
           combo += digit.querySelectorAll('li')[Math.round(digit.scrollTop / spinnerDigitHeight)].dataset.value;
         });
