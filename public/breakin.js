@@ -108,6 +108,7 @@ function setUpDigitScrollButtons(){
       if(combo.length < lock.querySelectorAll('input').length){
         // if the IntersectionObserver fails, e.g. on Chrome for Android, we might not have a value: get one the hard way
         // also occurs for non-numeric digits
+        combo = '';
         [...lock.querySelectorAll('.digit')].forEach(digit=>{
           combo += digit.querySelectorAll('li')[Math.round(digit.scrollTop / spinnerDigitHeight)].dataset.value;
         });
