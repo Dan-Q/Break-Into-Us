@@ -262,7 +262,7 @@ function currentPuzzle(){
 function updateScore(){
   let totalScore = 0;
   solvedPuzzles.forEach(pid=>{
-    totalScore += puzzles[pid].difficulty;
+    if(puzzles[pid]) totalScore += puzzles[pid].difficulty;
   });
   const percent = ((solvedPuzzles.length / puzzles.length) * 100).toFixed(1);
   const maxScore = puzzles.reduce((a,b) => a+b.difficulty, 0);
